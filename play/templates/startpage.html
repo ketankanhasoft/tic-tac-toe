@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+    <h1>Tic-Tac-Toe</h1>
+    <p>Enter Player name to play a game?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <input name="player1" value="player1"/>
+        <input name="player2" value="player2"/>
+        <button type="submit">Play</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block body %}
+    {% with next_player=game.next_player game_over=game.is_game_over %}
+        {% if game_over == 'X' %}
+            <h1>{{game.player_x}} wins!</h1>
+            <a href="{% url 'play:index' %}">Start a new game</a>
+        {% elif game_over == 'O' %}
+            <h1>{{game.player_o}} wins!</h1>
+            <a href="{% url 'play:index' %}">Start a new game</a>
+        {% elif game_over == ' ' %}
+            <h1>Stalemate</h1>
+            <a href="{% url 'play:index' %}">Start a new game</a>
+        {% else %}
+            {# Game still in progress #}
+            {% if next_player == 'X' %}
+                <h1>{{ game.player_x }} to play</h1>
+            {% elif next_player == 'O' %}
+                <h1>{{ game.player_o }} to play</h1>
+            {% endif %}
+        {% endif %}
+
+        {% comment %} 
+        in order to access them from the included template, need to do this:
+
+           game.board.index
+
+        Which will be interpreted as a dictionary based lookup
+        {% endcomment %}
+        <div class="board">
+            <div class="row">
+                {% include "square.html" with game=game index=0 play=game.board.0 %}
+                {% include "square.html" with game=game index=1 play=game.board.1 %}
+                {% include "square.html" with game=game index=2 play=game.board.2 %}
+            </div>
+            <div class="row">
+                {% include "square.html" with game=game index=3 play=game.board.3 %}
+                {% include "square.html" with game=game index=4 play=game.board.4 %}
+                {% include "square.html" with game=game index=5 play=game.board.5 %}
+            </div>
+            <div class="row">
+                {% include "square.html" with game=game index=6 play=game.board.6 %}
+                {% include "square.html" with game=game index=7 play=game.board.7 %}
+                {% include "square.html" with game=game index=8 play=game.board.8 %}
+            </div>
+        </div>
+    {% endwith %}
+{% endblock %}
