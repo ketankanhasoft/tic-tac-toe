@@ -9,7 +9,7 @@ tic-tac-toe game using django
 
 - 1.Install Python3.7
 - 2.python3 -m venv env
-- 3.ktn@ktn:~/env/bin$ source env/bin/activate
+- 3.ktn@ktn:~$ source env/bin/activate
 - 4.(env) ktn@ktn:~$ cd tic-tac-toe
 - 5.(env) ktn@ktn:~/tic-tac-toe$ pip install -r requirements.txt
 - 5.(env) ktn@ktn:~/tic-tac-toe$ python manage.py collectstatic
